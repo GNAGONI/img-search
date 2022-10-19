@@ -15,9 +15,23 @@ interface LoginPayload {
   username: string;
 }
 
+interface IImageRaw {
+  id: number;
+  urls: {
+    small: string;
+  };
+  alt_description: string;
+}
+
+interface IImage { 
+  id: number;
+  url: string;
+  alt: string;
+}
+
 interface HomeState {
   status: StateStatus;
-  images: any[];
+  images: IImage[];
   totalPages: number;
   page: number;
   query: string;
@@ -54,6 +68,8 @@ interface State {
 export { StateStatus, NotificationKind };
 export type {
   State,
+  IImage,
+  IImageRaw,
   UserState,
   HomeState,
   SpinnerState,

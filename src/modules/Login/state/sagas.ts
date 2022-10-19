@@ -15,7 +15,11 @@ import { showNotification } from '../../Notification/state/slice';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
 import { NotificationKind } from '../../../types';
 
-export function* login({ payload }: any) { // TODO: fix action
+interface LoginAction { 
+ payload: { username: string }
+}
+
+export function* login({ payload }: LoginAction) {
   try {
     yield put(showSpinner());
     const username = payload?.username;
@@ -51,7 +55,7 @@ export function* logout() {
   }
 }
 
-const saga: any = [
+const saga = [
   takeLatest(loginRequest, login),
   takeLatest(logoutRequest, logout),
 ];

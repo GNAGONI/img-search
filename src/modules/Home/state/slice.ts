@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { StateStatus, HomeState } from '../../../types';
+import { StateStatus, HomeState, IImage } from '../../../types';
 
 const initialState: HomeState = { 
   status: StateStatus.IDLE,
@@ -20,7 +20,7 @@ export const homeSlice = createSlice({
       state.query = action?.payload?.search;
       state.status = StateStatus.RUNNING
     },
-    imagesSuccess: (state, action: PayloadAction<{ images: any[], totalPages: number }>) => { 
+    imagesSuccess: (state, action: PayloadAction<{ images: IImage[], totalPages: number }>) => { 
       state.images = action?.payload?.images;
       state.totalPages = action?.payload?.totalPages;
       state.status = StateStatus.SUCCESS;

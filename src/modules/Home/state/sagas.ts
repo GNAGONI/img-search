@@ -2,19 +2,30 @@ import {
   takeLatest,
   put,
   select,
+  SelectEffect,
+  PutEffect,
 } from 'redux-saga/effects';
 import { imagesRequest, imagesSuccess, imagesError, changeImagePage } from './slice';
 import { getHomeImagesPage, getHomeImagesQuery } from './selectors';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
 import { showNotification } from '../../Notification/state/slice';
-import { NotificationKind } from '../../../types';
+import { NotificationKind, IImage, IImageRaw } from '../../../types';
 import { PUBLIC_API_KEY } from '../../../constants';
 
-interface ApiResponse { results: any[], total_pages: number }
+interface ApiResponse { results: IImageRaw[], total_pages: number }
+
+const normalizeImages = (images: IImageRaw[]): IImage[]  => {
+  const normalizedImages = images.map((image: IImageRaw) => ({
+    id: image?.id || 0,
+    url: image?.urls?.small || '',
+    alt: image?.alt_description || '',
+  }))
+  return normalizedImages;
+}
 
 export function* getImages(): Generator<
-  any,
-  any,
+  SelectEffect | Promise<ApiResponse> | PutEffect,
+  void,
   ApiResponse
 > {
   try {
@@ -23,7 +34,8 @@ export function* getImages(): Generator<
     const query = yield select(getHomeImagesQuery);
     const data = yield fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${query}&client_id=${PUBLIC_API_KEY}`)
       .then(result => result.json());
-    const images = data?.results || [];
+    const imagesRaw: IImageRaw[] = data?.results || [];
+    const images = normalizeImages(imagesRaw);
     const totalPages = data?.total_pages || 0;
     yield put(imagesSuccess({ images, totalPages }));
     if (!images.length) { 
@@ -47,7 +59,7 @@ export function* getImages(): Generator<
   }
 }
 
-const saga: any = [
+const saga = [
   takeLatest(imagesRequest, getImages),
   takeLatest(changeImagePage, getImages),
 ];

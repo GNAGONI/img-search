@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Image from '../../components/Image';
 import Pagination from './Pagination';
+import { IImage } from '../../types';
 
 const ImagesWrapper = styled('div')({
   display: 'flex',
@@ -26,14 +27,14 @@ const Images = () => {
           alignItems="center"
           spacing={2}
         >
-          {images.map((image) => (
+          {images.map((image: IImage) => (
             <Grid item xs="auto" sm="auto" md="auto" key={image.id}>
-              <Image url={image?.urls?.small} alt={image?.alt_description} />
+              <Image url={image.url} alt={image.alt} />
             </Grid>
           ))}
         </Grid>
       </Box>
-      {images.length && <Pagination />}
+      {!!images.length && <Pagination />}
     </ImagesWrapper>
   );
 };

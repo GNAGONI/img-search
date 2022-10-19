@@ -10,6 +10,7 @@ import {
   logoutError,
   logoutRequest,
 } from './slice';
+import { imagesClear } from '../../Home/state/slice';
 import { showNotification } from '../../Notification/state/slice';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
 import { NotificationKind } from '../../../types';
@@ -41,6 +42,7 @@ export function* login({ payload }: any) { // TODO: fix action
 export function* logout() { 
   try {
     yield put(showSpinner());
+    yield put(imagesClear());
     yield put(logoutSuccess());
   } catch (err) {
     yield put(logoutError());

@@ -20,6 +20,7 @@ interface HomeState {
   images: any[];
   totalPages: number;
   page: number;
+  query: string;
 }
 
 type SpinnerState = {

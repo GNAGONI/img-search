@@ -1,19 +1,36 @@
-import { Outlet, Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserUsername, getUserIsAuthenticated } from '../Login/state/selectors';
+import { logoutRequest } from '../Login/state/slice';
+
 
 const Layout = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector(getUserIsAuthenticated);
+  const username = useSelector(getUserUsername);
+
+  const logout = () => {
+    dispatch(logoutRequest());
+  }
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Login</Link>
-          </li>
-          <li>
-            <Link to="/home">Home</Link>
-          </li>
-        </ul>
-      </nav>
-
+      {isAuthenticated &&
+        <>
+          <div>{username}</div>
+          <button onClick={logout}>
+            Log out
+          </button>
+        </>
+      }
       <Outlet />
     </>
   )

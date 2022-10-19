@@ -6,13 +6,13 @@ import { loginRequest } from './state/slice';
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const isAuthenticated = useSelector(getUserIsAuthenticated);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginRequest({ username }))
+    dispatch(loginRequest({ username }));
   };
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { StateStatus, UserState, LoginPayload } from './types';
+import { StateStatus, UserState, LoginPayload } from '../../../types';
 
 const initialState: UserState = { 
   status: StateStatus.IDLE,
@@ -8,7 +8,7 @@ const initialState: UserState = {
   isAuthenticated: false,
 };
 
-export const counterSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -48,5 +48,5 @@ export const {
   logoutRequest,
   logoutSuccess,
   logoutError,
-} = counterSlice.actions
-export default counterSlice.reducer
+} = userSlice.actions
+export default userSlice.reducer

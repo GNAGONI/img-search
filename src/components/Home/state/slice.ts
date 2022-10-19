@@ -5,6 +5,8 @@ import { StateStatus, HomeState } from '../../../types';
 const initialState: HomeState = { 
   status: StateStatus.IDLE,
   images: [],
+  totalPages: 0,
+  page: 0,
 };
 
 export const homeSlice = createSlice({
@@ -14,7 +16,7 @@ export const homeSlice = createSlice({
     imagesRequest: (state, action: PayloadAction<{ search: string }>) => {
       state.status = StateStatus.RUNNING
     },
-    imagesSuccess: (state, action: PayloadAction<{ images: any[] }>) => { 
+    imagesSuccess: (state, action: PayloadAction<{ images: any[], totalPages: number }>) => { 
       state.images = action?.payload?.images;
       state.status = StateStatus.SUCCESS;
     },

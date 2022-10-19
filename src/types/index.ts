@@ -18,6 +18,8 @@ interface LoginPayload {
 interface HomeState {
   status: StateStatus;
   images: any[];
+  totalPages: number;
+  page: number;
 }
 
 interface State {

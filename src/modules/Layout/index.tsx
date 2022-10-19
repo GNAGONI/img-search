@@ -25,7 +25,7 @@ const Layout = () => {
     <>
       {isAuthenticated &&
         <>
-          <div>{username}</div>
+          <div>Hello: {username}</div>
           <button onClick={logout}>
             Log out
           </button>

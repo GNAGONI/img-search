@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
-import Layout from "./components/Layout";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Error from "./components/Error";
-import Spinner from './components/Spinner';
-import Notification from './components/Notification';
+import Layout from "./modules/Layout";
+import Login from "./modules/Login";
+import Home from "./modules/Home";
+import Error from "./modules/Error";
+import Spinner from './modules/Spinner';
+import Notification from './modules/Notification';
 import { StateProvider } from './providers';
 
 const App = () => (

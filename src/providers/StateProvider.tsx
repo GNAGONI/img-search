@@ -4,13 +4,12 @@ import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import { all } from 'redux-saga/effects';
-import userSagas from '../components/Login/state/sagas';
-import userReducer from '../components/Login/state/slice';
-import homeSagas from '../components/Home/state/sagas';
-import homeReducer from '../components/Home/state/slice';
-import spinnerReducer from '../components/Spinner/state/slice';
-import notificationReducer from '../components/Notification/state/slice';
-
+import userSagas from '../modules/Login/state/sagas';
+import userReducer from '../modules/Login/state/slice';
+import homeSagas from '../modules/Home/state/sagas';
+import homeReducer from '../modules/Home/state/slice';
+import spinnerReducer from '../modules/Spinner/state/slice';
+import notificationReducer from '../modules/Notification/state/slice';
 
 function* rootSaga() {
   yield all([
@@ -34,7 +33,7 @@ const setupStore = () => {
       notification: notificationReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false })
-      .concat(sagaMiddleware) // TODO: check for prepend
+      .concat(sagaMiddleware)
       .concat(logger),
   });
   return store;

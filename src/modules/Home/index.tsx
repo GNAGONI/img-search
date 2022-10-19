@@ -1,12 +1,14 @@
 import { useState, SyntheticEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { imagesRequest } from './state/slice';
-import { getHomeImages } from './state/selectors';
+import Images from './Images';
+import Button from '../../components/Button';
+import TextField from '../../components/TextField';
+import Form from '../../components/Form';
 
 const Home = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  const images = useSelector(getHomeImages);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -15,28 +17,15 @@ const Home = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
+      <Form onSubmit={handleSubmit}>
+        <TextField
+          label="Query"
           value={search || ''}
           onChange={(e: SyntheticEvent) => setSearch((e.target as HTMLTextAreaElement).value)}
         />
-        <button type="submit" color="primary">
-          Search
-        </button>
-      </form>
-      <div className="col-12 d-flex justify-content-evenly flex-wrap">
-        {images.map((image) => {
-          return (
-            <img
-              key={image.id}
-              className="col-3 img-fluid img-thumbnail"
-              src={image.urls.small}
-              alt="val.alt_description"
-            />
-          );
-        })}
-      </div>
+        <Button title="Search" />
+      </Form>
+      <Images />
     </div>
   );
 };

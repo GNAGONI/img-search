@@ -3,6 +3,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserUsername, getUserIsAuthenticated } from '../Login/state/selectors';
 import { logoutRequest } from '../Login/state/slice';
+import Button from '../../components/Button';
+import Header from '../../components/Header';
 
 
 const Layout = () => {
@@ -24,12 +26,10 @@ const Layout = () => {
   return (
     <>
       {isAuthenticated &&
-        <>
-          <div>Hello: {username}</div>
-          <button onClick={logout}>
-            Log out
-          </button>
-        </>
+        <Header>
+          <div>Hello, {username}</div>
+          <Button onClick={logout} title="Log out" />
+        </Header>
       }
       <Outlet />
     </>

@@ -1,47 +1,24 @@
 import { useState, useEffect, SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeStyles } from '@mui/styles';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 import { getUserIsAuthenticated } from './state/selectors';
 import { loginRequest } from './state/slice';
+import Button from '../../components/Button';
+import TextField from '../../components/TextField';
+import Form from '../../components/Form';
 
-const useStyles = makeStyles(() => ({
-  description: {
-    textAlign: 'center',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '16px',
-    flex: '1 auto',
-
-    '& .MuiTextField-root': {
-      margin: '8px',
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: '16px',
-      width: '300px',
-    },
-  },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-  },
-}));
-
+const LoginWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+})
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const classes = useStyles();
   const [username, setUsername] = useState('');
   const isAuthenticated = useSelector(getUserIsAuthenticated);
 
@@ -57,21 +34,16 @@ const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className={classes.wrapper}>
-      <form className={classes.form} onSubmit={handleSubmit}>
+    <LoginWrapper>
+      <Form onSubmit={handleSubmit}>
         <TextField
           label="Username"
-          variant="outlined"
-          type="text"
-          required
           value={username || ''}
           onChange={(e: SyntheticEvent) => setUsername((e.target as HTMLTextAreaElement).value)}
         />
-        <Button type="submit" variant="contained" color="primary">
-          Log in
-        </Button>
-      </form>
-    </div>
+        <Button title="Log in" />
+      </Form>
+    </LoginWrapper>
   );
 };
 

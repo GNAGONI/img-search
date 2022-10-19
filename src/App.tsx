@@ -7,6 +7,7 @@ import Home from "./modules/Home";
 import Error from "./modules/Error";
 import Spinner from './modules/Spinner';
 import Notification from './modules/Notification';
+import PrivateRoute from './modules/PrivateRoute';
 import { StateProvider } from './providers';
 
 const App = () => (
@@ -18,7 +19,14 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Login />} />
-            <Route path="home" element={<Home />} />
+            <Route
+              path="/home"
+              element={(
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              )}
+            />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>

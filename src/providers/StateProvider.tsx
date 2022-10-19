@@ -8,6 +8,8 @@ import userSagas from '../components/Login/state/sagas';
 import userReducer from '../components/Login/state/slice';
 import homeSagas from '../components/Home/state/sagas';
 import homeReducer from '../components/Home/state/slice';
+import spinnerReducer from '../components/Spinner/state/slice';
+import notificationReducer from '../components/Notification/state/slice';
 
 
 function* rootSaga() {
@@ -28,6 +30,8 @@ const setupStore = () => {
     reducer: {
       user: userReducer,
       home: homeReducer,
+      spinner: spinnerReducer,
+      notification: notificationReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false })
       .concat(sagaMiddleware) // TODO: check for prepend

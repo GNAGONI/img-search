@@ -11,8 +11,8 @@ import {
   logoutRequest,
 } from './slice';
 import { imagesClear } from '../../Home/state/slice';
-import { showSuccessNotification, showErrorNotification } from '../../Notification/state/slice';
-import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
+import { showSuccessNotification, showErrorNotification } from '../../../features/Notification/state/slice';
+import { showSpinner, hideSpinner } from '../../../features/Spinner/state/slice';
 import { Text } from '../../../constants';
 
 interface LoginAction { 

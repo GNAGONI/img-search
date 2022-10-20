@@ -1,6 +1,6 @@
+import { SyntheticEvent } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import { SyntheticEvent } from 'react';
 
 interface Props {
   label: string;

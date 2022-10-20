@@ -8,8 +8,8 @@ import {
 import { imagesRequest, imagesSuccess, imagesError, changeImagePage } from './slice';
 import { getHomeImagesPage, getHomeImagesQuery } from './selectors';
 import {  ImageData, ImageRaw } from '../types';
-import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
-import { showErrorNotification } from '../../Notification/state/slice';
+import { showSpinner, hideSpinner } from '../../../features/Spinner/state/slice';
+import { showErrorNotification } from '../../../features/Notification/state/slice';
 import { PUBLIC_API_KEY, API_URL, Text} from '../../../constants';
 
 interface ApiResponse { results: ImageRaw[], total_pages: number }

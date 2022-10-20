@@ -1,5 +1,3 @@
-import { StateStatus } from '../../types';
-
 type ImageRaw = {
   id: number;
   urls: {
@@ -15,7 +13,6 @@ type ImageData = {
 }
 
 type HomeState = {
-  status: StateStatus;
   images: ImageData[];
   totalPages: number;
   page: number;

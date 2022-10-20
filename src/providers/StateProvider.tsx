@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
@@ -19,8 +19,8 @@ import userSagas from '../modules/Login/state/sagas';
 import userReducer from '../modules/Login/state/slice';
 import homeSagas from '../modules/Home/state/sagas';
 import homeReducer from '../modules/Home/state/slice';
-import spinnerReducer from '../modules/Spinner/state/slice';
-import notificationReducer from '../modules/Notification/state/slice';
+import spinnerReducer from '../features/Spinner/state/slice';
+import notificationReducer from '../features/Notification/state/slice';
 
 type Props = {
   children: ReactElement,
@@ -40,7 +40,7 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   user: userReducer,
   home: homeReducer,
   spinner: spinnerReducer,
@@ -80,3 +80,5 @@ const StateProvider = ({ children }: Props) => {
 };
 
 export default StateProvider;
+export type AppDispatch = typeof store.dispatch;
+export type State = ReturnType<typeof store.getState>

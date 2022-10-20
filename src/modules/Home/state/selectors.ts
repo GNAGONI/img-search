@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { State } from '../../../types';
+import { State } from '../../../providers/StateProvider';
 
 export const getHome = (state: State) => state.home;
 

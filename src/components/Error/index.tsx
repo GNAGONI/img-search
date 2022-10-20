@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import Wrapper from '../../components/Wrapper';
+import Wrapper from '../Wrapper';
 import { Text } from '../../constants';
 
 const Error = () => {

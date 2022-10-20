@@ -1,13 +1,14 @@
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getNotification } from './state/selectors';
 import { hideNotification } from './state/slice';
+import useAppDispatch from '../../hooks/useAppDispatch';
 
 const Notification = () => {
   const { message, kind, open } = useSelector(getNotification);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClose = () => {
     dispatch(hideNotification());

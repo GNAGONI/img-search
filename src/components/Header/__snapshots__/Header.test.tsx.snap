@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly Header 1`] = `
+exports[`Header should have snapshot 1`] = `
 <div
   className="css-9xbidx"
 />

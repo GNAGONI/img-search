@@ -1,16 +1,15 @@
 import renderer from 'react-test-renderer';
-import { render, screen, fireEvent } from '@testing-library/react';
 import * as reactRedux from 'react-redux';
-import Home from './index';
+import { render, screen } from '@testing-library/react';
+import Images from './index';
 
 jest.mock("react-redux", () => ({
   useSelector: jest.fn(),
   useDispatch: jest.fn(),
 }));
 
-describe('Home', () => {
+describe('Images', () => {
   const useSelectorMock = reactRedux.useSelector;
-  const useDispatchMock = reactRedux.useDispatch;
   const mockStore = {
     home: {
       images: [
@@ -20,20 +19,17 @@ describe('Home', () => {
       ]
     }
   };
-
   beforeEach(() => {
-    (useDispatchMock as jest.Mock).mockImplementation(() => () => { }); // eslint-disable-line
     (useSelectorMock as jest.Mock).mockImplementation(selector => selector(mockStore));
   });
   afterEach(() => {
-    (useDispatchMock as jest.Mock).mockClear();
     (useSelectorMock as jest.Mock).mockClear();
   });
 
-  it('should have snapshot', () => {
+  it('should have a valid snapshot', () => {
     const tree = renderer
       .create(
-        <Home />
+        <Images />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -41,21 +37,20 @@ describe('Home', () => {
 
   it('should behave correctly', () => {
     render(
-      <Home />
+      <Images />
     );
 
-    const textbox = screen.getByRole('textbox', { name: 'Search' }) as HTMLInputElement;
-    expect(textbox).toBeInTheDocument();
-    expect(textbox).toBeVisible();
-    expect(textbox.value).toBe("");
-    fireEvent.change(textbox, { target: { value: 'Cat' } });
-    expect(textbox.value).toBe("Cat");
+    const image1 = screen.getByAltText('alt img1',);
+    expect(image1).toBeInTheDocument();
+    expect(image1).toBeVisible();
 
-    const button = screen.getByRole('button', { name: 'Search' });
-    expect(button).toBeInTheDocument();
-    expect(button).toBeVisible();
+    const image2 = screen.getByAltText('alt img2',);
+    expect(image2).toBeInTheDocument();
+    expect(image2).toBeVisible();
+
+    const image3 = screen.getByAltText('alt img3',);
+    expect(image3).toBeInTheDocument();
+    expect(image3).toBeVisible();
   });
 });
-
-
 

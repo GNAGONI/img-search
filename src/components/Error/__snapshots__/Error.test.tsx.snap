@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly Error 1`] = `
+exports[`Error should have snapshot 1`] = `
 <div
   className="css-d5gdhc"
   orientation="column"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home should have snapshot 1`] = `
+exports[`Images should have a valid snapshot 1`] = `
 <div>
   <form
     className="css-epn0vg"

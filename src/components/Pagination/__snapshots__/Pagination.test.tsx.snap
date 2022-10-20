@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly Pagination 1`] = `
+exports[`Pagination should have snapshot 1`] = `
 <div
   className="css-1p5q5e5-MuiStack-root"
 >

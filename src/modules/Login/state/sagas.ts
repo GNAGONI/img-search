@@ -13,6 +13,7 @@ import {
 import { imagesClear } from '../../Home/state/slice';
 import { showSuccessNotification, showErrorNotification } from '../../Notification/state/slice';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
+import { Text } from '../../../constants';
 
 interface LoginAction { 
  payload: { username: string }
@@ -25,14 +26,14 @@ export function* login({ payload }: LoginAction) {
     yield put(loginSuccess({ username }));
     yield put(
       showSuccessNotification({
-        message: 'Successfully logged in ',
+        message: Text.SUCCESS_LOGIN_NOTIFICATION_MESSAGE,
       }),
     );
   } catch (err) {
     yield put(loginError());
     yield put(
       showErrorNotification({
-        message: 'Error during login',
+        message: Text.UNEXPECTED_ERROR_DURING_LOGIN_REQUEST_MESSAGE,
       }),
     );
   } finally { 

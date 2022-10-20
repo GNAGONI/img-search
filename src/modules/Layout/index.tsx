@@ -4,6 +4,7 @@ import { getUserUsername, getUserIsAuthenticated } from '../Login/state/selector
 import { logoutRequest } from '../Login/state/slice';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
+import { Text } from '../../constants';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Layout = () => {
     <>
       {isAuthenticated &&
         <Header>
-          <div>Hello, {username}</div>
+          <div>{Text.GREETING_MESSAGE}{username}</div>
           <Button onClick={logout} title="Log out" />
         </Header>
       }

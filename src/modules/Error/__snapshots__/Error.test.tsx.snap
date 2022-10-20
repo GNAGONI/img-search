@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly Error 1`] = `
+<div
+  className="css-d5gdhc"
+  orientation="column"
+>
+  <h1
+    className="MuiTypography-root MuiTypography-h1 css-o2w69a-MuiTypography-root"
+  >
+    404
+  </h1>
+  <h6
+    className="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+  >
+    The page you’re looking for doesn’t exist.
+  </h6>
+</div>
+`;

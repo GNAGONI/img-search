@@ -19,7 +19,7 @@ const Home = () => {
     <div>
       <Form onSubmit={handleSubmit}>
         <TextField
-          label="Query"
+          label="Search"
           value={search || ''}
           onChange={(e: SyntheticEvent) => setSearch((e.target as HTMLTextAreaElement).value)}
         />

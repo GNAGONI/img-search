@@ -10,7 +10,7 @@ import { getHomeImagesPage, getHomeImagesQuery } from './selectors';
 import {  ImageData, ImageRaw } from '../types';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
 import { showErrorNotification } from '../../Notification/state/slice';
-import { PUBLIC_API_KEY } from '../../../constants';
+import { PUBLIC_API_KEY, API_URL, Text} from '../../../constants';
 
 interface ApiResponse { results: ImageRaw[], total_pages: number }
 
@@ -32,7 +32,7 @@ export function* getImages(): Generator<
     yield put(showSpinner());
     const page = yield select(getHomeImagesPage);
     const query = yield select(getHomeImagesQuery);
-    const data = yield fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${query}&client_id=${PUBLIC_API_KEY}`)
+    const data = yield fetch(`${API_URL}?page=${page}&query=${query}&client_id=${PUBLIC_API_KEY}`)
       .then(result => result.json());
     const imagesRaw: ImageRaw[] = data?.results || [];
     const images = normalizeImages(imagesRaw);
@@ -41,7 +41,7 @@ export function* getImages(): Generator<
     if (!images.length) { 
       yield put(
         showErrorNotification({
-          message: 'No images found',
+          message: Text.IMAGES_NOT_FOUND_NOTIFICATION_MESSAGE,
         }),
       );
     }
@@ -49,7 +49,7 @@ export function* getImages(): Generator<
     yield put(imagesError());
     yield put(
       showErrorNotification({
-        message: 'Error during images request',
+        message: Text.UNEXPECTED_ERROR_DURING_IMAGE_REQUEST_MESSAGE,
       }),
     );
   } finally {

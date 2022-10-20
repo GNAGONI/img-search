@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SpinnerState } from '../../../types';
+import { SpinnerState } from '../types';
 
 const initialState: SpinnerState = { 
   open: false,

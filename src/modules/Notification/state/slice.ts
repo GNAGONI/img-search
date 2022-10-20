@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { NotificationState, NotificationData, NotificationKind } from '../../../types';
+import { NotificationData, NotificationKind, NotificationState } from '../types';
 
 const initialState: NotificationState = {
   open: false,
@@ -12,10 +12,20 @@ export const notificationSlice = createSlice({
   name: 'notification',
   initialState,
   reducers: {
-    showNotification: (state, action: PayloadAction<NotificationData>) => {
+    showSuccessNotification: (state, action: PayloadAction<NotificationData>) => {
       state.open = true;
       state.message = action.payload.message;
-      state.kind = action.payload.kind;
+      state.kind = NotificationKind.SUCCESS;
+    },
+    showErrorNotification: (state, action: PayloadAction<NotificationData>) => {
+      state.open = true;
+      state.message = action.payload.message;
+      state.kind = NotificationKind.ERROR;
+    },
+    showInfoNotification: (state, action: PayloadAction<NotificationData>) => {
+      state.open = true;
+      state.message = action.payload.message;
+      state.kind = NotificationKind.INFO;
     },
     hideNotification: (state) => {
       state.open = false;
@@ -26,7 +36,9 @@ export const notificationSlice = createSlice({
 });
 
 export const {
-  showNotification,
   hideNotification,
+  showSuccessNotification,
+  showErrorNotification,
+  showInfoNotification,
 } = notificationSlice.actions;
 export default notificationSlice.reducer;

@@ -7,15 +7,15 @@ import {
 } from 'redux-saga/effects';
 import { imagesRequest, imagesSuccess, imagesError, changeImagePage } from './slice';
 import { getHomeImagesPage, getHomeImagesQuery } from './selectors';
+import {  ImageData, ImageRaw } from '../types';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
-import { showNotification } from '../../Notification/state/slice';
-import { NotificationKind, IImage, IImageRaw } from '../../../types';
+import { showErrorNotification } from '../../Notification/state/slice';
 import { PUBLIC_API_KEY } from '../../../constants';
 
-interface ApiResponse { results: IImageRaw[], total_pages: number }
+interface ApiResponse { results: ImageRaw[], total_pages: number }
 
-const normalizeImages = (images: IImageRaw[]): IImage[]  => {
-  const normalizedImages = images.map((image: IImageRaw) => ({
+const normalizeImages = (images: ImageRaw[]): ImageData[]  => {
+  const normalizedImages = images.map((image: ImageRaw) => ({
     id: image?.id || 0,
     url: image?.urls?.small || '',
     alt: image?.alt_description || '',
@@ -34,24 +34,22 @@ export function* getImages(): Generator<
     const query = yield select(getHomeImagesQuery);
     const data = yield fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${query}&client_id=${PUBLIC_API_KEY}`)
       .then(result => result.json());
-    const imagesRaw: IImageRaw[] = data?.results || [];
+    const imagesRaw: ImageRaw[] = data?.results || [];
     const images = normalizeImages(imagesRaw);
     const totalPages = data?.total_pages || 0;
     yield put(imagesSuccess({ images, totalPages }));
     if (!images.length) { 
       yield put(
-        showNotification({
+        showErrorNotification({
           message: 'No images found',
-          kind: NotificationKind.ERROR,
         }),
       );
     }
   } catch (err) {
     yield put(imagesError());
     yield put(
-      showNotification({
+      showErrorNotification({
         message: 'Error during images request',
-        kind: NotificationKind.ERROR,
       }),
     );
   } finally {

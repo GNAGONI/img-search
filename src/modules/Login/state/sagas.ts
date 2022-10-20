@@ -11,9 +11,8 @@ import {
   logoutRequest,
 } from './slice';
 import { imagesClear } from '../../Home/state/slice';
-import { showNotification } from '../../Notification/state/slice';
+import { showSuccessNotification, showErrorNotification } from '../../Notification/state/slice';
 import { showSpinner, hideSpinner } from '../../Spinner/state/slice';
-import { NotificationKind } from '../../../types';
 
 interface LoginAction { 
  payload: { username: string }
@@ -25,17 +24,15 @@ export function* login({ payload }: LoginAction) {
     const username = payload?.username;
     yield put(loginSuccess({ username }));
     yield put(
-      showNotification({
+      showSuccessNotification({
         message: 'Successfully logged in ',
-        kind: NotificationKind.SUCCESS,
       }),
     );
   } catch (err) {
     yield put(loginError());
     yield put(
-      showNotification({
+      showErrorNotification({
         message: 'Error during login',
-        kind: NotificationKind.ERROR,
       }),
     );
   } finally { 

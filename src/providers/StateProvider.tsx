@@ -40,7 +40,7 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   user: userReducer,
   home: homeReducer,
   spinner: spinnerReducer,
@@ -80,3 +80,5 @@ const StateProvider = ({ children }: Props) => {
 };
 
 export default StateProvider;
+export type AppDispatch = typeof store.dispatch;
+export type State = ReturnType<typeof store.getState>

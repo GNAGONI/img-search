@@ -1,13 +1,13 @@
 import { useState, SyntheticEvent } from 'react';
-import { useDispatch } from 'react-redux';
 import { imagesRequest } from './state/slice';
 import Images from './Images';
 import Button from '../../components/Button';
 import TextField from '../../components/TextField';
 import Form from '../../components/Form';
+import useAppDispatch from '../../hooks/useAppDispatch';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [search, setSearch] = useState('');
 
   const handleSubmit = (e: SyntheticEvent) => {

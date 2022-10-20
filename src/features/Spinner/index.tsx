@@ -1,12 +1,13 @@
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getSpinner } from './state/selectors';
 import { hideSpinner } from './state/slice';
+import useAppDispatch from '../../hooks/useAppDispatch';
 
 const Spinner = () => {
   const { open } = useSelector(getSpinner);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClose = () => {
     dispatch(hideSpinner());

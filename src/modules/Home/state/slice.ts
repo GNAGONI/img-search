@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { HomeState, ImageData } from '../types';
-import { StateStatus } from '../../../types';
 
 const initialState: HomeState = { 
-  status: StateStatus.IDLE,
   query: '',
   images: [],
   totalPages: 0,
@@ -19,18 +17,15 @@ export const homeSlice = createSlice({
       state.page = 1;
       state.totalPages = 0;
       state.query = action?.payload?.search;
-      state.status = StateStatus.RUNNING;
     },
     imagesSuccess: (state, action: PayloadAction<{ images: ImageData[], totalPages: number }>) => { 
       state.images = action?.payload?.images;
       state.totalPages = action?.payload?.totalPages;
-      state.status = StateStatus.SUCCESS;
     },
     imagesError: (state) => {
       state.images = [];
       state.totalPages = 0;
       state.page = 1;
-      state.status = StateStatus.ERROR;
     },
     imagesClear: () => initialState,
     changeImagePage: (state, action: PayloadAction<{ page: number }>) => {

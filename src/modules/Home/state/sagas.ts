@@ -19,9 +19,9 @@ const normalizeImages = (images: IImageRaw[]): IImage[]  => {
     id: image?.id || 0,
     url: image?.urls?.small || '',
     alt: image?.alt_description || '',
-  }))
+  }));
   return normalizedImages;
-}
+};
 
 export function* getImages(): Generator<
   SelectEffect | Promise<ApiResponse> | PutEffect,

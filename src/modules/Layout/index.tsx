@@ -6,13 +6,13 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 
 const Layout = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(getUserIsAuthenticated);
   const username = useSelector(getUserUsername);
 
   const logout = () => {
     dispatch(logoutRequest());
-  }
+  };
 
   return (
     <>
@@ -24,7 +24,7 @@ const Layout = () => {
       }
       <Outlet />
     </>
-  )
+  );
 };
 
 export default Layout;

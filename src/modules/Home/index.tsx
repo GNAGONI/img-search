@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(imagesRequest({ search }))
+    dispatch(imagesRequest({ search }));
   };
 
   return (

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 import { SpinnerState } from '../../../types';
 
 const initialState: SpinnerState = { 
@@ -16,10 +16,10 @@ export const spinnerSlice = createSlice({
       state.open = false;
     },
   }
-})
+});
 
 export const {
   showSpinner,
   hideSpinner,
-} = spinnerSlice.actions
-export default spinnerSlice.reducer
+} = spinnerSlice.actions;
+export default spinnerSlice.reducer;

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { NotificationState, NotificationData, NotificationKind } from '../../../types';
 
 const initialState: NotificationState = {
@@ -23,10 +23,10 @@ export const notificationSlice = createSlice({
       state.kind = NotificationKind.NULL;
     },
   }
-})
+});
 
 export const {
   showNotification,
   hideNotification,
-} = notificationSlice.actions
-export default notificationSlice.reducer
+} = notificationSlice.actions;
+export default notificationSlice.reducer;

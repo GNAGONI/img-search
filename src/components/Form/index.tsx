@@ -12,7 +12,7 @@ const CustomStyledForm = styled('form')({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '16px',
-})
+});
 
 
 const Form = (props: Props) => {

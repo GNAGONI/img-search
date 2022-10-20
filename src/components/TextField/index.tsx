@@ -11,7 +11,7 @@ interface Props {
 const CustomStyledTextField = styled(TextField)({
   width: '300px',
   margin: '4px',
-})
+});
 
 
 const CustomTextField = (props: Props) => {

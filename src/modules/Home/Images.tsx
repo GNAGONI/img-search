@@ -13,7 +13,7 @@ const ImagesWrapper = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   padding: '16px',
-})
+});
 
 const Images = () => {
   const images = useSelector(getHomeImages);

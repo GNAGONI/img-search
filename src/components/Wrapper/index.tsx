@@ -11,7 +11,7 @@ const StyledWrapper = styled('div')<Props>(({ orientation }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   height: '100%',
-}))
+}));
 
 const Wrapper = (props: Props) => {
   return (

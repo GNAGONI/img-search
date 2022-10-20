@@ -3,7 +3,7 @@ enum StateStatus {
   RUNNING = 'RUNNING',
   SUCCESS = 'SUCCESS',
   ERROR = 'ERROR',
-};
+}
 
 interface UserState {
   status: StateStatus;

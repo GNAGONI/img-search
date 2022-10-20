@@ -38,16 +38,16 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: 'root',
   storage,
-}
+};
 
 const rootReducer = combineReducers({
   user: userReducer,
   home: homeReducer,
   spinner: spinnerReducer,
   notification: notificationReducer,
-})
+});
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const setupStore = () => {
   const store = configureStore({
@@ -62,10 +62,10 @@ const setupStore = () => {
       .concat(logger),
   });
   return store;
-}
+};
 
 const store = setupStore();
-const persistor = persistStore(store)
+const persistor = persistStore(store);
 
 const StateProvider = ({ children }: Props) => {
   sagaMiddleware.run(rootSaga);

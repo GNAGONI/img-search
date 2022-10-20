@@ -10,7 +10,7 @@ const Header = styled('div')({
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: '16px',
-})
+});
 
 
 const Layout = (props: Props) => {

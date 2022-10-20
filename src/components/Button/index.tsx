@@ -10,7 +10,7 @@ const CustomStyledButton = styled(Button)({
   width: '100px',
   height: '56px',
   marginLeft: '4px',
-})
+});
 
 const CustomButton = (props: Props) => {
   return (
@@ -23,6 +23,6 @@ const CustomButton = (props: Props) => {
       <p>{props.title}</p>
     </CustomStyledButton>
   );
-}
+};
 
 export default CustomButton;

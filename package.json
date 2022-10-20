@@ -16,6 +16,9 @@
     "@types/node": "^16.11.68",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint-plugin-react": "^7.31.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
@@ -33,13 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "browserslist": {
     "production": [
@@ -55,6 +54,7 @@
   },
   "devDependencies": {
     "@types/redux-logger": "^3.0.9",
+    "eslint": "^8.25.0",
     "react-router-dom": "^6.4.2"
   }
 }

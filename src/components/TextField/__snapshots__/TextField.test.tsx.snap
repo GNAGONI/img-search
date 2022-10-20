@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly TextField 1`] = `
+exports[`TextField should have snapshot 1`] = `
 <div
   className="MuiFormControl-root MuiTextField-root css-t7h6ca-MuiFormControl-root-MuiTextField-root"
 >

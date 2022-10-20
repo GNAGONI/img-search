@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
+import Layout from "./modules/Layout";
+import Login from "./modules/Login";
+import Home from "./modules/Home";
+import Error from "./modules/Error";
+import Spinner from './modules/Spinner';
+import Notification from './modules/Notification';
+import PrivateRoute from './modules/PrivateRoute';
+import { StateProvider } from './providers';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <StateProvider>
+    <ThemeProvider theme={theme}>
+      <Spinner />
+      <Notification />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Login />} />
+            <Route
+              path="/home"
+              element={(
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              )}
+            />
+            <Route path="*" element={<Error />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  </StateProvider>
+);
 
 export default App;

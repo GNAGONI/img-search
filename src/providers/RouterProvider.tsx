@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../modules/Layout";
+import Layout from "../features/Layout";
 import Login from "../modules/Login";
 import Home from "../modules/Home";
-import Error from "../modules/Error";
-import PrivateRoute from '../modules/PrivateRoute';
+import Error from "../components/Error";
+import PrivateRoute from '../features/PrivateRoute';
 
 const RouterProvider = () => (
   <BrowserRouter>

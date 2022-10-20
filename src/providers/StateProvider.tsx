@@ -19,8 +19,8 @@ import userSagas from '../modules/Login/state/sagas';
 import userReducer from '../modules/Login/state/slice';
 import homeSagas from '../modules/Home/state/sagas';
 import homeReducer from '../modules/Home/state/slice';
-import spinnerReducer from '../modules/Spinner/state/slice';
-import notificationReducer from '../modules/Notification/state/slice';
+import spinnerReducer from '../features/Spinner/state/slice';
+import notificationReducer from '../features/Notification/state/slice';
 
 type Props = {
   children: ReactElement,

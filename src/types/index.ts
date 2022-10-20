@@ -1,7 +1,7 @@
 import { UserState } from '../modules/Login/types';
 import { HomeState } from '../modules/Home/types'; 
-import { NotificationState } from '../modules/Notification/types';
-import { SpinnerState } from '../modules/Spinner/types';
+import { NotificationState } from '../features/Notification/types';
+import { SpinnerState } from '../features/Spinner/types';
 
 enum StateStatus { 
   IDLE = 'IDLE',

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserUsername, getUserIsAuthenticated } from '../Login/state/selectors';
-import { logoutRequest } from '../Login/state/slice';
+import { getUserUsername, getUserIsAuthenticated } from '../../modules/Login/state/selectors';
+import { logoutRequest } from '../../modules/Login/state/slice';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import { Text } from '../../constants';
